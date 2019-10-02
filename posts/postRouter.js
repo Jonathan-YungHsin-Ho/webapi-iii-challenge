@@ -36,11 +36,14 @@ router.delete('/:id', validatePostId, (req, res) => {
     });
 });
 
-// Endpoint to Update (PUT) post -
+// Endpoint to Update (PUT) post - FUNCTIONAL
 router.put('/:id', validatePostId, (req, res) => {
-  Posts.update()
-    .then()
-    .catch();
+  Posts.update(req.params.id, req.body)
+    .then(post => res.status(200).json(post))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Error updating the post' });
+    });
 });
 
 // Custom Middleware
