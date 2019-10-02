@@ -24,11 +24,16 @@ router.get('/:id', validatePostId, (req, res) => {
     });
 });
 
-// Endpoint to Delete (DEL) post -
+// Endpoint to Delete (DEL) post - FUNCTIONAL
 router.delete('/:id', validatePostId, (req, res) => {
-  Posts.remove()
-    .then()
-    .catch();
+  Posts.remove(req.params.id)
+    .then(count =>
+      res.status(200).json({ message: 'The post has been deleted' }),
+    )
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Error removing the post' });
+    });
 });
 
 // Endpoint to Update (PUT) post -
