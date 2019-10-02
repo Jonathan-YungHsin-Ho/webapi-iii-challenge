@@ -126,16 +126,23 @@ function validateUser(req, res, next) {
   if (!Object.keys(req.body).length) {
     res.status(400).json({ message: 'Missing user data!' });
   } else if (!req.body.name) {
-    res.status(400).json({ message: 'Missing required name field!' });
+    res.status(400).json({ message: 'Missing required "name" field!' });
   } else {
     next();
   }
   // next();
 }
 
-// Status - Not done
+// Status - FUNCTIONAL
 function validatePost(req, res, next) {
-  next();
+  if (!Object.keys(req.body).length) {
+    res.status(400).json({ message: 'Missing post data!' });
+  } else if (!req.body.text) {
+    res.status(400).json({ message: 'Missing required "text" field!' });
+  } else {
+    next();
+  }
+  // next();
 }
 
 module.exports = router;
