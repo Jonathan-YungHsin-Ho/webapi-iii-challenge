@@ -103,7 +103,7 @@ router.put('/:id', validateUserId, (req, res) => {
 
 // Custom Middleware
 
-// Status - FUNCTIONAL
+// Validate user ID on every request expecting user ID parameter - FUNCTIONAL
 function validateUserId(req, res, next) {
   Users.getById(req.params.id)
     .then(user => {
@@ -121,7 +121,7 @@ function validateUserId(req, res, next) {
   // next();
 }
 
-// Status - FUNCTIONAL
+// Validate body on create new user request - FUNCTIONAL
 function validateUser(req, res, next) {
   if (!Object.keys(req.body).length) {
     res.status(400).json({ message: 'Missing user data!' });
@@ -133,7 +133,7 @@ function validateUser(req, res, next) {
   // next();
 }
 
-// Status - FUNCTIONAL
+// Validate body on create new post request - FUNCTIONAL
 function validatePost(req, res, next) {
   if (!Object.keys(req.body).length) {
     res.status(400).json({ message: 'Missing post data!' });
