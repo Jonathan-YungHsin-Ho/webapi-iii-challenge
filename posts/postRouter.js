@@ -14,11 +14,14 @@ router.get('/', (req, res) => {
     });
 });
 
-// Endpoint to Retrieve (GET) posts by id -
+// Endpoint to Retrieve (GET) posts by id - FUNCTIONAL
 router.get('/:id', validatePostId, (req, res) => {
-  Posts.getById()
-    .then()
-    .catch();
+  Posts.getById(req.params.id)
+    .then(post => res.status(200).json(post))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Error retrieving the post' });
+    });
 });
 
 // Endpoint to Delete (DEL) post -
@@ -37,7 +40,7 @@ router.put('/:id', validatePostId, (req, res) => {
 
 // Custom Middleware
 
-// Validate post ID on every request expecting post ID parameter - NEEDS TESTING
+// Validate post ID on every request expecting post ID parameter - FUNCTIONAL
 function validatePostId(req, res, next) {
   Posts.getById(req.params.id)
     .then(post => {
