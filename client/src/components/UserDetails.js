@@ -10,7 +10,9 @@ export default function UserDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/users/${id}/posts`)
+      .get(
+        `http://webapi-iii-challenge-jyh.herokuapp.com/api/users/${id}/posts`,
+      )
       .then(res => {
         // console.log(res.data);
         setPosts(res.data);

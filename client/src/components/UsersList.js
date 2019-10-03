@@ -7,7 +7,7 @@ export default function UsersList() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/api/users')
+      .get('http://webapi-iii-challenge-jyh.herokuapp.com/api/users')
       .then(res => {
         // console.log(res.data);
         setUsers(res.data);
