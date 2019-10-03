@@ -1,30 +1,32 @@
 // code away!
-const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
+const server = require('./server');
 
-const userRouter = require('./users/userRouter');
-const postRouter = require('./posts/postRouter');
+// const express = require('express');
+// const helmet = require('helmet');
+// const cors = require('cors');
 
-const server = express();
+// const userRouter = require('./users/userRouter');
+// const postRouter = require('./posts/postRouter');
 
-function logger(req, res, next) {
-  console.log(`[${new Date().toISOString()}] ${req.method} to ${req.url}`);
+// const server = express();
 
-  next();
-}
+// function logger(req, res, next) {
+//   console.log(`[${new Date().toISOString()}] ${req.method} to ${req.url}`);
 
-server.use(logger);
-server.use(helmet());
-server.use(express.json());
-server.use(cors());
+//   next();
+// }
 
-server.use('/api/users', userRouter);
-server.use('/api/posts', postRouter);
+// server.use(logger);
+// server.use(helmet());
+// server.use(express.json());
+// server.use(cors());
 
-server.get('/', (req, res) => {
-  res.send(`<h1>WebAPI III Challenge</h1>`);
-});
+// server.use('/api/users', userRouter);
+// server.use('/api/posts', postRouter);
+
+// server.get('/', (req, res) => {
+//   res.send(`<h1>WebAPI III Challenge</h1>`);
+// });
 
 const port = 4000;
 server.listen(port, () =>
